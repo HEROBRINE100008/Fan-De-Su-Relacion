@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta Completa con Hello Kitty</title>
+    <title>Carta con Desvanecimiento</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -55,8 +55,9 @@
             border-radius: 8px;
             clip-path: polygon(0 0, 100% 0, 50% 50%);
             transform-origin: top;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 3;
+            opacity: 1;
         }
 
         .hello-kitty-seal {
@@ -71,6 +72,7 @@
             transform: translateX(-50%);
             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
             z-index: 4;
+            transition: opacity 0.5s ease;
         }
 
         .message {
@@ -91,6 +93,11 @@
 
         .envelope.open .envelope-flap {
             transform: rotateX(180deg) translateY(-30px);
+            opacity: 0;
+        }
+
+        .envelope.open .hello-kitty-seal {
+            opacity: 0;
         }
 
         .envelope.open .message {
@@ -136,13 +143,13 @@
             <div class="hello-kitty-seal"></div>
             <div class="message">
                 <div class="text-content">
-                    <h1>¡8 Meses Mágicos!</h1>
-                    <p>Mi querida [Nombre],</p>
-                    <p>Estos 8 meses han sido un sueño hecho realidad. Cada momento a tu lado es un tesoro que guardo en mi corazón.</p>
-                    <p>Tu amor ilumina mis días y tu sonrisa es mi mayor alegría. Gracias por ser mi compañera en esta aventura maravillosa.</p>
-                    <p>Prometo amarte cada día más y construir juntos un futuro lleno de felicidad. ¡Eres mi todo!</p>
-                    <p>Con todo mi amor,<br>Tu Novio</p>
-                    <div style="margin-top:20px;font-size:40px;">💞🎀</div>
+                    <h1>¡Nuestra Historia!</h1>
+                    <p>Mi amor [Nombre],</p>
+                    <p>Estos 8 meses han sido un viaje maravilloso. Cada día a tu lado es una nueva página en nuestro libro de amor.</p>
+                    <p>Tu sonrisa ilumina mis días y tu amor da sentido a mi existencia. Eres mi razón para ser mejor cada día.</p>
+                    <p>Prometo amarte y respetarte en cada momento, celebrar tus éxitos y apoyarte en cada desafío. ¡Eres mi todo!</p>
+                    <p>Con todo mi ser,<br>Tu Novio</p>
+                    <div style="margin-top:20px;font-size:40px;">💖🎀</div>
                 </div>
             </div>
         </div>
