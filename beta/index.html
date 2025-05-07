@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor con Hello Kitty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffcce6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 95vw;
+            max-width: 500px;
+            height: 400px;
+            margin-top: 100px;
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .envelope-base {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            background: #ff4d4d;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff6666;
+            border-radius: 8px;
+            clip-path: polygon(0 0, 100% 0, 50% 50%);
+            transform-origin: top;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+            opacity: 1;
+        }
+
+        .hello-kitty-seal {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('[CITYPNG.COM]Adorable Hello Kitty Head HD Transparent PNG - 2000x2000.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            bottom: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: drop-shadow(2px 2px 4px rgba(255,255,255,0.3));
+            z-index: 4;
+            transition: opacity 0.5s ease;
+        }
+
+        .message {
+            position: absolute;
+            width: 90%;
+            height: auto;
+            min-height: 130%;
+            background: white;
+            padding: 30px;
+            left: 5%;
+            top: 120%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .hello-kitty-corner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-image: url('[CITYPNG.COM]Side View Excited Hello Kitty HD Transparent Background - 1000x1000.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            bottom: 10px;
+            right: 10px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+            z-index: 2;
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg) translateY(-30px);
+            opacity: 0;
+        }
+
+        .envelope.open .hello-kitty-seal {
+            opacity: 0;
+        }
+
+        .envelope.open .message {
+            top: -30%;
+            opacity: 1;
+        }
+
+        .text-content {
+            color: #ff6699;
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff3366;
+            font-size: 2.3em;
+            margin-bottom: 15px;
+        }
+
+        .hearts span {
+            position: absolute;
+            font-size: 20px;
+            animation: rise 4s linear infinite;
+            opacity: 0;
+            bottom: -20px;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+                bottom: -20px;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+                bottom: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts"></div>
+    
+    <div class="envelope-container">
+        <div class="envelope">
+            <div class="envelope-base"></div>
+            <div class="envelope-flap"></div>
+            <div class="hello-kitty-seal"></div>
+            <div class="message">
+                <div class="text-content">
+                    <h1>¡Nuestra Historia!</h1>
+                    <p>Mi amor [Nombre],</p>
+                    <p>Estos 8 meses han sido un viaje maravilloso. Cada día a tu lado es una nueva página en nuestro libro de amor.</p>
+                    <p>Tu sonrisa ilumina mis días y tu amor da sentido a mi existencia. Eres mi razón para ser mejor cada día.</p>
+                    <p>Prometo amarte y respetarte en cada momento, celebrar tus éxitos y apoyarte en cada desafío. ¡Eres mi todo!</p>
+                    <p>Con todo mi ser,<br>Tu Novio</p>
+                    <div style="margin-top:20px;font-size:40px;">💖🎀</div>
+                    <div class="hello-kitty-corner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function createHeart() {
+            const heart = document.createElement('span');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+            heart.style.color = getRandomColor();
+            document.querySelector('.hearts').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        const envelope = document.querySelector('.envelope');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('open');
+        });
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
