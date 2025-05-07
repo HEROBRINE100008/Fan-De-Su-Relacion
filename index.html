@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carta con Desvanecimiento</title>
+    <title>Carta de Amor con Hello Kitty</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -70,7 +70,7 @@
             bottom: 160px;
             left: 50%;
             transform: translateX(-50%);
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(2px 2px 4px rgba(255,255,255,0.3));
             z-index: 4;
             transition: opacity 0.5s ease;
         }
@@ -122,14 +122,25 @@
             position: absolute;
             color: #ff3366;
             font-size: 20px;
-            animation: float 3s linear infinite;
+            animation: rise 4s linear infinite;
             opacity: 0;
+            bottom: -20px;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        @keyframes rise {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+                bottom: -20px;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+                bottom: 100%;
+            }
         }
     </style>
 </head>
@@ -160,11 +171,11 @@
             const heart = document.createElement('span');
             heart.innerHTML = '❤';
             heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
             heart.style.fontSize = Math.random() * 30 + 20 + 'px';
             document.querySelector('.hearts').appendChild(heart);
             
-            setTimeout(() => heart.remove(), 5000);
+            setTimeout(() => heart.remove(), 4000);
         }
 
         const envelope = document.querySelector('.envelope');
